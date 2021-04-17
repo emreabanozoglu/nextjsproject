@@ -1,2 +1,1 @@
-export const mdxComponents = {
-}
+export const mdxComponents = {}

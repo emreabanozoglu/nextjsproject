@@ -1,41 +1,36 @@
-import Link from "next/link"
-import { getAllNodes } from "next-mdx/server"
+import Link from 'next/link'
+import { getAllNodes } from 'next-mdx/server'
 
-function BlogPage({posts}){
-    console.log(posts)
-    return (
+function BlogPage({ posts }) {
+  console.log(posts)
+  return (
     <div className="site-container">
-        <div className="space-y-5">
-        {posts.map((post)=>{
-        return (
-        <article key={post.url}>
-            <h2 className="text-xl font-bold">
+      <div className="space-y-5">
+        {posts.map((post) => {
+          return (
+            <article key={post.url}>
+              <h2 className="text-xl font-bold">
                 <Link href={post.url}>
-                    <a>{post.frontMatter.title}</a>
+                  <a>{post.frontMatter.title}</a>
                 </Link>
-                
-            </h2>
-            <p>
-                {post.frontMatter.excerpt}
-            </p>
-            <div className="text-gray-500">
-                <span>
-                    {post.frontMatter.date}
-                </span>
-            </div>
-        </article>
-        )
-    })}
-        </div>
+              </h2>
+              <p>{post.frontMatter.excerpt}</p>
+              <div className="text-gray-500">
+                <span>{post.frontMatter.date}</span>
+              </div>
+            </article>
+          )
+        })}
+      </div>
     </div>
-    )
+  )
 }
 
 export async function getStaticProps() {
   return {
     props: {
-      posts: await getAllNodes("post"),
-    },
+      posts: await getAllNodes('post')
+    }
   }
 }
 
