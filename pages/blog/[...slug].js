@@ -29,7 +29,9 @@ export default function PostPage({ post }) {
           {isAuthenticated ? (
             <div>
               <div className="flex items-center space-x-2">
-                <button className="button-container">Send</button>
+                <button data-testid="send-button" className="button-container">
+                  Send
+                </button>
                 <img
                   src={user.picture}
                   width={30}
@@ -37,7 +39,9 @@ export default function PostPage({ post }) {
                 ></img>
                 <span>{user.name}</span>
                 <button
+                  className="button-container"
                   typeof="button"
+                  data-testid="logout-button"
                   onClick={() =>
                     logout({ returnTo: process.env.NEXT_PUBLIC_URL + 'blog' })
                   }
@@ -50,7 +54,12 @@ export default function PostPage({ post }) {
             <button
               className="button-container"
               typeof="button"
-              onClick={() => loginWithRedirect()}
+              data-testid="login-button"
+              onClick={() =>
+                loginWithRedirect({
+                  returnTo: process.env.NEXT_PUBLIC_URL + 'blog'
+                })
+              }
             >
               Login
             </button>

@@ -5,7 +5,7 @@ export default function Header() {
     <header className="site-container py-6">
       <nav className="space-x-5">
         <Link href="/">
-          <a>About</a>
+          <a data-testid="about">About</a>
         </Link>
         <Link href="/blog">
           <a>Blog</a>
